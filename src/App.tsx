@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styled from "styled-components";
+import Presentation from "./presentation";
+import { AppContextWrapper } from "./context";
+import SimpleSnackbar from "./presentation/snackbar";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContextWrapper>
+      <Container>
+        <Presentation />
+        {/** alert messages */}
+        <SimpleSnackbar />
+      </Container>
+    </AppContextWrapper>
   );
 }
+
+const Container = styled.div`
+  width: 100%;
+  padding: 0 80px;
+
+  @media (max-width: 768px) {
+    padding: 0 8px;
+  }
+`;
 
 export default App;
